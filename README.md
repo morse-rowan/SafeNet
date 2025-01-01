@@ -1,14 +1,16 @@
 <h1> SafeNet: Prototype Lightweight ConvNet for Grid-Based Binary Classification of Safe Drone Landing Zones </h1>
-
-<div align="center">
-  <img src="/imgs/gifs/gif1.gif" width="200" />
-  <img src="/imgs/gifs/gif2.gif" width="200" />
-  <img src="/imgs/gifs/gif4.gif" width="200" />
-  <br>
-  <img src="/imgs/gifs/gif5.gif" width="200" />
-  <img src="/imgs/gifs/gif6.gif" width="200" />
-  <img src="/imgs/gifs/gif7.gif" width="200" />
-</div> 
+<figure align="center">
+    <div align="center">
+      <img src="/imgs/gifs/gif1.gif" width="200" />
+      <img src="/imgs/gifs/gif2.gif" width="200" />
+      <img src="/imgs/gifs/gif4.gif" width="200" />
+      <br>
+      <img src="/imgs/gifs/gif5.gif" width="200" />
+      <img src="/imgs/gifs/gif6.gif" width="200" />
+      <img src="/imgs/gifs/gif7.gif" width="200" />
+    </div> 
+    <figcaption style="font-style: italic; margin-top: 10px;">GIFs made from predictions on Test data at a 0.40 confidence threshold</figcaption>
+</figure>
 
 ### Table of Contents
 1. [Overview](#overview)  
