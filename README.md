@@ -122,7 +122,7 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
 </head>
 <body>
     <figure>
-        <img src="imgs/diagrams/sn.arch.png" alt="SafeNet Architecture" class="center-image">
+        <img src="imgs/diagrams/arch.png" alt="SafeNet Architecture" class="center-image">
         <figcaption class="caption">SafeNet Architecture Diagram <br> Input = (600x800x3)<br>Purple = Conv2D,ReLU <br> Red = MaxPool,(2x2),stride = 2 <br> Pink = Pointwise,(1x1),ReLU<br>Green = GlobalPool<br>Yellow = Sigmoid</figcaption>
     </figure>
 </body>
@@ -191,6 +191,45 @@ Where:
 - \( w_1 \) and \( w_0 \) are the class weights for unsafe and safe regions, respectively.
 
 **SafeNet was trained with weights w0 = 1 & w1 = 1.5** 
+
+## Results 
+<div style="display: flex; justify-content: space-between;">
+  <div>
+    <img src="imgs\results\results.1a.png" alt="Results 1a" style="max-width: 100%;"><br>
+    <img src="imgs\results\results.1b.png" alt="Results 1b" style="max-width: 100%;">
+    <p>Caption: </p>
+  </div>
+  <div>
+    <img src="imgs\results\results.3a.png" alt="Results 2a" style="max-width: 100%;"><br>
+    <img src="imgs\results\results.3b.png" alt="Results 2b" style="max-width: 100%;">
+    <p>Caption:</p>
+  </div>
+</div>
+<div style="display: flex; justify-content: space-between;">
+  <div>
+    <img src="imgs\results\results.4a.png" alt="Results 1a" style="max-width: 100%;"><br>
+    <img src="imgs\results\results.4b.png" alt="Results 1b" style="max-width: 100%;">
+    <p>Caption: </p>
+  </div>
+  <div>
+    <img src="imgs\results\results.5a.png" alt="Results 2a" style="max-width: 100%;"><br>
+    <img src="imgs\results\results.5b.png" alt="Results 2b" style="max-width: 100%;">
+    <p>Caption:</p>
+  </div>
+</div>
+<div style="display: flex; justify-content: space-between;">
+  <div>
+    <img src="imgs\results\results.7a.png" alt="Results 1a" style="max-width: 100%;"><br>
+    <img src="imgs\results\results.7b.png" alt="Results 1b" style="max-width: 100%;">
+    <p>Caption: </p>
+  </div>
+  <div>
+    <img src="imgs\results\results.10a.png" alt="Results 2a" style="max-width: 100%;"><br>
+    <img src="imgs\results\results.10b.png" alt="Results 2b" style="max-width: 100%;">
+    <p>Caption:</p>
+  </div>
+</div>
+
 
 
 
