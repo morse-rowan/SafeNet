@@ -122,7 +122,7 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
 </head>
 <body>
     <figure>
-        <img src="imgs/diagrams/sn.arch.png" alt="SafeNet Architecture" class="center-image">
+        <img src="imgs/diagrams/arch.png" alt="SafeNet Architecture" class="center-image">
         <figcaption class="caption">SafeNet Architecture Diagram <br> Input = (600x800x3)<br>Purple = Conv2D,ReLU <br> Red = MaxPool,(2x2),stride = 2 <br> Pink = Pointwise,(1x1),ReLU<br>Green = GlobalPool<br>Yellow = Sigmoid</figcaption>
     </figure>
 </body>
@@ -167,6 +167,7 @@ Note that all these metrics are influenced by adjustments to the confidence thre
 
 ### Prioritizing Recall (Weighted Binary Crossentropy Loss)
 #### Standard Binary Crossentropy Loss
+
 $$
 \text{Binary Cross-Entropy Loss} = -\frac{1}{N} \sum_{i=1}^{N} \left( y_i \cdot \log(p_i) + (1 - y_i) \cdot \log(1 - p_i) \right)
 $$
