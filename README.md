@@ -1,21 +1,18 @@
 <h1> SafeNet: Prototype Lightweight ConvNet for Grid-Based Binary Classification of Safe Drone Landing Zones </h1>
-<figure align="center">
-    <div align="center">
-      <div>
-        <img src="/imgs/gifs/gif1.gif" width="200" />
-        <img src="/imgs/gifs/gif2.gif" width="200" />
-        <img src="/imgs/gifs/gif4.gif" width="200" />
-      </div>
-      <div>
-        <img src="/imgs/gifs/gif5.gif" width="200" />
-        <img src="/imgs/gifs/gif6.gif" width="200" />
-        <img src="/imgs/gifs/gif7.gif" width="200" />
-      </div>
-    </div>
-    <figcaption style="font-style: italic; margin-top: 10px; text-align: center;">
-        GIFs made from predictions on Test data at a 0.40 confidence threshold. <br> The red dots indicate "unsafe" regions predicted by SafeNet.
-    </figcaption>
-</figure>
+<p align="center">
+  <img src="/imgs/gifs/gif1.gif" width="200" />
+  <img src="/imgs/gifs/gif2.gif" width="200" />
+  <img src="/imgs/gifs/gif4.gif" width="200" />
+</p>
+<p align="center">
+  <img src="/imgs/gifs/gif5.gif" width="200" />
+  <img src="/imgs/gifs/gif6.gif" width="200" />
+  <img src="/imgs/gifs/gif7.gif" width="200" />
+</p>
+<p align="center" style="font-style: italic; margin-top: 10px;">
+  GIFs made from predictions on Test data at a 0.40 confidence threshold. The red dots indicate "unsafe" regions predicted by SafeNet.
+</p>
+
 
 ## Table of Contents
 1. [Overview](#overview)  
@@ -23,7 +20,7 @@
 5. [Dataset & Data-Pipeline](#dataset)
 6. [Model Details](#model-details)
     - [Model Architecture](#model-architecture)
-    - [Important Metrics & Benchmark Performance Goals](#important-metrics-&-benchmark-performance-goals)
+    - [Important Metrics & Performance Benchmarks](#important-metrics-&-benchmark-performance-goals)
     - [Priortizing Recall](#prioritizing-recall-weighted-binary-crossentropy-loss)
         1. Standard Binary Cross-Entropy Loss
         2. Class Weights to Improve Recall Specifically 
@@ -78,20 +75,10 @@ Then using the masks I was able to create 60 row x 80 colomn binary labels for e
 The FloodNet dataset is publicly available and can be downloaded from the [official repository](https://github.com/BinaLab/FloodNet-Supervised_v1.0).
 
 ### Data Pipeline 
-<html>
-<head>
-    <style>
-        .center-image {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-<body>
-    <img src="imgs/diagrams/pipeline_chart.png" alt="Flow Chart of Datapipeline" class="center-image">
-</body>
-</html>
+<p align="center">
+  <img src="imgs/diagrams/pipeline_chart.png" alt="Flow Chart of Datapipeline" width="600"/>
+</p>
+
 
 1. First, I took the original 3000x4000px FloodNet dataset and for each image/mask I resized down to 600x800px. 
 2. I then used the Albumentations library to **5x the amount of training data** using data augmentation techniques like random flips/rotations, random lighting, etc. 
@@ -99,39 +86,24 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
 
 ## Model Details 
 ### Model Architecture 
-<html>
-<head>
-    <style>
-        .center-image {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .caption {
-            text-align: center;
-            margin-top: 10px;
-            color: #333;
-            font-style: italic;
-        }
-        figure {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <figure>
-        <img src="imgs/diagrams/arch.png" alt="SafeNet Architecture" class="center-image">
-        <figcaption class="caption">SafeNet Architecture Diagram <br> Input = (600x800x3)<br>Purple = Conv2D,ReLU <br> Red = MaxPool,(2x2),stride = 2 <br> Pink = Pointwise,(1x1),ReLU<br>Green = GlobalPool<br>Yellow = Sigmoid</figcaption>
-    </figure>
-</body>
-</html>
+<p align="center">
+  <img src="imgs/diagrams/arch.png" alt="SafeNet Architecture" width="600"/>
+</p>
+<p align="center">
+  <i>SafeNet Architecture Diagram</i><br>
+  Input = (600x800x3)<br>
+  Purple = Conv2D, ReLU <br>
+  Red = MaxPool, (2x2), stride = 2 <br>
+  Pink = Pointwise, (1x1), ReLU<br>
+  Green = GlobalPool<br>
+  Yellow = Sigmoid
+</p>
+
 
 #### Key Features 
 
 1. **Light Weight** 
-    - The general goal of the model architecture was to minimize runtime for forward pass to the model. While designing, I often tested for FLOPs (floating-point operations per second), which is not a concrete and has its limitations, In order to gain general insight into possible model performance. 
+    - The general goal of the model architecture was to minimize runtime for forward pass to the model. While designing, I often tested for FLOPs (floating-point operations per second) to gain general insight into possible model performance, despite the metrics' limitations. 
     - One may notice that the architecture is very similar to **YOLOv1**, aside from minor dimensional/layer changes, as YOLO has been shown to perform well on bounding-box object detection. Considering this task requires a similar approach, with the difference being the model isn't predicting boxes then performing Non-Max Suppression (NMS), but instead the model is classifying the image cells. 
     
 
@@ -144,7 +116,7 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
 4. **Note** 
 - The current model is **not** yet pruned or quantized which leaves extra room for future runtime advancements. 
 
-### Important Metrics & Benchmark Performance Goals.
+### Important Metrics & Performance Benchmarks.
 
 1. **Recall** 
     - **Most Important, Goal >95%** 
@@ -170,6 +142,7 @@ Note that all these metrics are influenced by adjustments to the confidence thre
 $$
 \text{Binary Cross-Entropy Loss} = -\frac{1}{N} \sum_{i=1}^{N} \left( y_i \cdot \log(p_i) + (1 - y_i) \cdot \log(1 - p_i) \right)
 $$
+
 Where:
 - \( N \) is the number of samples.
 - \( y_i \) is the true label (either 0 or 1) for sample \( i \).
