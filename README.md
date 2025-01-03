@@ -166,41 +166,17 @@ Where:
 **SafeNet was trained with weights w0 = 1 & w1 = 1.5** 
 
 ## Results 
-<div style="display: flex; justify-content: space-between;">
-  <div>
-    <img src="imgs\results\results.1a.png" alt="Results 1a" style="max-width: 50%;"><br>
-    <img src="imgs\results\results.1b.png" alt="Results 1b" style="max-width: 50%;">
-    <p>Caption: </p>
-  </div>
-  <div>
-    <img src="imgs\results\results.3a.png" alt="Results 2a" style="max-width: 50%;"><br>
-    <img src="imgs\results\results.3b.png" alt="Results 2b" style="max-width: 50%;">
-    <p>Caption:</p>
-  </div>
-  <div>
-    <img src="imgs\results\results.4a.png" alt="Results 1a" style="max-width: 50%;"><br>
-    <img src="imgs\results\results.4b.png" alt="Results 1b" style="max-width: 50%;">
-    <p>Caption: </p>
-  </div>
-</div>
+## Image Stacks (Set 1)
 
-<div style="display: flex; justify-content: space-between;">
-  <div>
-    <img src="imgs\results\results.5a.png" alt="Results 2a" style="max-width: 50%;"><br>
-    <img src="imgs\results\results.5b.png" alt="Results 2b" style="max-width: 50%;">
-    <p>Caption:</p>
-  </div>
-  <div>
-    <img src="imgs\results\results.7a.png" alt="Results 1a" style="max-width: 50%;"><br>
-    <img src="imgs\results\results.7b.png" alt="Results 1b" style="max-width: 50%;">
-    <p>Caption: </p>
-  </div>
-  <div>
-    <img src="imgs\results\results.10a.png" alt="Results 2a" style="max-width: 50%;"><br>
-    <img src="imgs\results\results.10b.png" alt="Results 2b" style="max-width: 50%;">
-    <p>Caption:</p>
-  </div>
-</div>
+| Stack 1: Results 1a and 1b | Stack 2: Results 2a and 2b | Stack 3: Results 3a and 3b |
+|-----------------------------|-----------------------------|-----------------------------|
+| ![Results 1a](imgs\results\results.1a.png) <br> ![Results 1b](imgs\results\results.1b.png) <br> Caption: | ![Results 2a](imgs\results\results.3a.png) <br> ![Results 2b](imgs\results\results.3b.png) <br> Caption: | ![Results 3a](imgs\results\results.9a.png) <br> ![Results 3b](imgs\results\results.9b.png) <br> Caption:|
+
+| Stack 1: Results 1a and 1b | Stack 2: Results 2a and 2b | Stack 3: Results 3a and 3b |
+|-----------------------------|-----------------------------|-----------------------------|
+| ![Results 1a](imgs\results\results.5a.png) <br> ![Results 1b](imgs\results\results.5b.png) <br> Caption: | ![Results 2a](imgs\results\results.7a.png) <br> ![Results 2b](imgs\results\results.7b.png) <br> Caption: | ![Results 3a](imgs\results\results.10a.png) <br> ![Results 3b](imgs\results\results.10b.png) <br> Caption:|
+
+
 
 
 
