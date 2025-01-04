@@ -1,6 +1,8 @@
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Contributors][contributors-shield]][contributors-url]
 <h1> SafeNet: Prototype Lightweight ConvNet for Grid-Based Binary Classification of Safe Drone Landing Zones </h1>
 
-**By Rowan Morse - University of Pittsburgh '28** 
+**Rowan Morse - University of Pittsburgh '28** 
 
 |||| 
 |-----------------------------|-----------------------------| -----------------------------| 
@@ -17,7 +19,7 @@
 6. [Model Details](#model-details)
     - [Model Architecture](#model-architecture)
     - [Important Metrics & Performance Benchmarks](#important-metrics-&-benchmark-performance-goals)
-    - [Priortizing Recall](#prioritizing-recall-weighted-binary-crossentropy-loss)
+    - [Prioritizing Recall](#prioritizing-recall-weighted-binary-crossentropy-loss)
         1. [Standard Binary Cross-Entropy Loss](#standard-binary-crossentropy-loss)
         2. [Class Weights to Improve Recall Specifically](#class-weights-to-improve-recall-specifically)
         3. [Weighted Binary Cross-Entropy Loss](#weighted-binary-crossentropy-loss)
@@ -33,12 +35,12 @@
 ---
 
 ## Overview  
-SafeNet is a lightweight convolutional neural network designed for compatability with edge devices to predict safe landing zones for drones. Using a grid-based binary classification approach, it analyzes image sections to determine areas free from hazards like water, buildings, and trees.
+SafeNet is a lightweight convolutional neural network designed for compatibility with edge devices to predict safe landing zones for drones. Using a grid-based binary classification approach, it analyzes image sections to determine areas free from hazards like water, buildings, and trees.
 
 **Why is this significant?** 
-With an increased use of UAVs (unmanned aerial vehicles) in **disaster relief and warefare,** operators may encounter disconnections caused by weather, low battery, obstacles, or **GPS Jammers** and in these scenarios a protocal to land safely by just taking an image of the ground below. 
+With an increased use of UAVs (unmanned aerial vehicles) in **disaster relief and warfare,** operators may encounter disconnections caused by weather, low battery, obstacles, or **GPS Jammers** and in these scenarios a protocol to land safely by just taking an image of the ground below. 
 
-This project was my way of introducing myself to computer vision and by no means do I think this model is deployable, but I do believe that similar approach/models could solve real world problems like **aid/package delivery** or even **analyze/fight wild-fires** using the models predictions of flat areas which could help identify safe zones for landing, optimize waterbomber flight paths, or assist in assessing areas for safe operations during emergencies.
+This project was my way of introducing myself to computer vision and by no means do I think this model is deployable, but I do believe that similar approach/models could solve real world problems like **aid/package delivery** or even **analyze/fight wild-fires** using the models predictions of flat areas which could help identify safe zones for landing, optimize water bomber flight paths, or assist in assessing areas for safe operations during emergencies.
 
 ---
 
@@ -48,7 +50,7 @@ This project was my way of introducing myself to computer vision and by no means
 - **Grid-Based Labeling:** Divides large images into 4800 (60x80) binary labels corresponding to pixel safety (0 = "safe", 1 = "unsafe") 
 - **Lightweight Model Architecture:** YOLO inspired, the model predicts the entire image rather than image kernels allowing for faster predictions compared to the alternative sliding window approach.
 
-- **Class Weights to Prioritize Safety:** By weighting safe predictions more than unsafe predictions the model is trained to priotize recall and limit false-safe predictions. This feature is essential for deployment as losing a drone could be costly, so the model must have very high confidence for safe predictions. 
+- **Class Weights to Prioritize Safety:** By weighting safe predictions more than unsafe predictions the model is trained to prioritize recall and limit false-safe predictions. This feature is essential for deployment as losing a drone could be costly, so the model must have very high confidence for safe predictions. 
 ## Dataset & Pipeline 
 ### Dataset: FloodNet
 
@@ -57,20 +59,20 @@ The **FloodNet dataset** is a high-resolution UAV imagery dataset designed for p
 #### Key Features of FloodNet:
 - **10 Classes** ('Background':0, 'Building-flooded':1, 'Building-non-flooded':2, 'Road-flooded':3, 'Road-non-flooded':4, 'Water':5, 'Tree':6, 'Vehicle':7, 'Pool':8, 'Grass':9)
 - **Total Images:** 2343 (Train: 1445, Val: 450, Test: 448)
-- **High-Resolution UAV Imagery:** Provides detailed 3000x4000px images taken at a height of 200 feet with a high 1.5cm spacial resolution.  
+- **High-Resolution UAV Imagery:** Provides detailed 3000x4000px images taken at a height of 200 feet with a high 1.5cm spatial resolution.  
 - **Semantic Segmentation:** Pixel-wise labeling allows masks that can be used for regional classification. 
 
 
 #### How My Project Uses FloodNet:
-Firstly, using the original segmentation labels from the masks I needed to seperate the labels into "Safe" or "Unsafe" for classification. 
+Firstly, using the original segmentation labels from the masks I needed to separate the labels into "Safe" or "Unsafe" for classification. 
 
 Of the 10 labels I concluded that...
 
-Flat areas like **grass and roads/parking lots** could be considered **safe** for drone landing. I originally labeled road as unsafe but later revised as most disaster scenarios that would require drone deployment would be due to road unaccessibility, meaning that there would be no moving cars to avoid. 
+Flat areas like **grass and roads/parking lots** could be considered **safe** for drone landing. I originally labeled the road unsafe but later revised as most disaster scenarios that would require drone deployment would be due to road inaccessibility, meaning that there would be no moving cars to avoid. 
 
 I deemed any **background, buildings, flooded-roads, water, trees, pools, or vehicles** as unsafe which is self-explanatory. 
 
-Then using the masks I was able to create 60 row x 80 colomn binary labels for each image. This was excuted by sliding a 50x50px across the masks with a step of 10px if the window contained more than 20% "unsafe" pixels a 1 would be placed in the label corresponding to that region of the original photo. Using region based labels I avoided having to execute a sliding window algorithm for post training inferencing. If I had used a sliding window post-training I would've had to make the model predict every region of an image which causes far more latency in terms of runtime and is far less effective than classifying the entire image.
+Then using the masks I was able to create 60 row x 80 column binary labels for each image. This was executed by sliding a 50x50px across the masks with a step of 10px if the window contained more than 20% "unsafe" pixels a 1 would be placed in the label corresponding to that region of the original photo. Using region based labels I avoided having to execute a sliding window algorithm for post training inferencing. If I had used a sliding window post-training I would've had to make the model predict every region of an image which causes far more latency in terms of runtime and is far less effective than classifying the entire image.
 
 
 #### Accessing the Dataset:
@@ -78,7 +80,7 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
 
 ### Data Pipeline 
 <p align="center">
-  <img src="imgs/diagrams/pipeline_chart.png" alt="Flow Chart of Datapipeline" width="600"/>
+  <img src="imgs/diagrams/pipeline_chart.png" alt="Flow Chart of Data Pipeline" width="600"/>
 </p>
 
 
@@ -110,10 +112,10 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
     
 
 2. **Pooling, Downsampling, & Pointwise Convolutions** 
-    - The model uses **Maxpooling, strided convolutions, and pointwise(1x1) convolutions** for spatial reduction, minimizing computational overhead while preserving critical information.
+    - The model uses **Max Pooling, strided convolutions, and pointwise(1x1) convolutions** for spatial reduction, minimizing computational overhead while preserving critical information.
 
 3. **Grid-Based Prediction**  
-- As previously mentioned, the 4800x1 sigmoid output layer is essentially a 60x80 grid of 10x10 regions of the image where each value in the output vector corresponds with the models confidence of whether the region is "unsafe." 
+- As previously mentioned, the 4800x1 sigmoid output layer is essentially a 60x80 grid of 10x10 regions of the image where each value in the output vector corresponds with the model's confidence of whether the region is "unsafe." 
 
 4. **Note** 
 - The current model is **not** yet pruned or quantized which leaves extra room for future runtime advancements. 
@@ -124,14 +126,14 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
     - **Most Important, Goal >95%** 
     - Measures the proportion of actual unsafe regions that are correctly identified.
     - Important for minimizing false negatives (e.g., missing an unsafe region).
-    - Losing a drone is expensive so we want to maxmize our models predictions of unsafe regions, recall gives us this insight. 
+    - Losing a drone is expensive so we want to maximize our models predictions of unsafe regions, recall gives us this insight. 
 2. **Precision**
     - Indicates the proportion of predicted unsafe regions that are actually unsafe.
 3. **F1 Score** 
     - **2nd Priority, Goal >80%** 
     - The harmonic mean of precision and recall.
-    - Balances the trade off between recall and precision, without, our model would predict every region as "unsafe" to maxmize recall.  
-    - Since our task prioritizes recall an F1 score of greater than 80% will indicate that our model has a decent ratio for unsafe/safe predictions while still allowing high recall. 
+    - Balances the trade off between recall and precision, without, our model would predict every region as "unsafe" to maximize recall.  
+    - Since our task prioritizes recall, an F1 score of greater than 80% will indicate that our model has a decent ratio for unsafe/safe predictions while still allowing high recall. 
 4. **Binary Accuracy**
     - Measures the percentage of correct predictions across all grid regions.
     - Gives general measure of model performance.
@@ -139,8 +141,8 @@ The FloodNet dataset is publicly available and can be downloaded from the [offic
 Note that all these metrics are influenced by adjustments to the confidence threshold. 
 
 
-### Prioritizing Recall (Weighted Binary Crossentropy Loss)
-#### Standard Binary Crossentropy Loss
+### Prioritizing Recall (Weighted Binary Cross-Entropy Loss)
+#### Standard Binary Cross-Entropy Loss
 $$
 \text{Binary Cross-Entropy Loss} = -\frac{1}{N} \sum_{i=1}^{N} \left( y_i \cdot \log(p_i) + (1 - y_i) \cdot \log(1 - p_i) \right)
 $$
@@ -154,7 +156,7 @@ Where:
 - Incorporating a larger weight to unsafe predictions makes misclassifying an unsafe region as safe becomes costlier to our loss function during training. 
 - This pushes the model to better predict unsafe regions, directly improving recall. 
 
-#### Weighted Binary Crossentropy Loss
+#### Weighted Binary Cross-Entropy Loss
 $$
 \text{Weighted Binary Cross-Entropy Loss} = -\frac{1}{N} \sum_{i=1}^{N} \left( w_1 \cdot y_i \cdot \log(p_i) + w_0 \cdot (1 - y_i) \cdot \log(1 - p_i) \right)
 $$
@@ -184,22 +186,22 @@ Where:
 
 
 ### Test Benchmarks 
-- Since the confidence threshold drastically effects the models benchmark performance, we can create a visual plot of the metrics throughout different thresholds to gain better insight. 
+- Since the confidence threshold drastically affects the models benchmark performance, we can create a visual plot of the metrics throughout different thresholds to gain better insight. 
 <p align="center">
   <img src="imgs/diagrams/Grid-Based Binary Classification Metrics vs. Threshold.png" alt="threshold chart" width="600"/>
 </p>
 
 - Based on the plot one can decide which threshold suits there needs, or in other words how much risk one is willing to take. 
-- For the purpose of further evaluation, I will proceed with a threshold of 0.2 as it has elevated recall with a good prescision tradeoff. 
+- For the purpose of further evaluation, I will proceed with a threshold of 0.2 as it has elevated recall with a good precision tradeoff. 
 
 **On Test Data (no TTA,threshold = 0.2)**
 - **Recall** = 0.9651 
 - **F1 Score** = 0.7839
 - **Binary Accuracy** = 0.7455 
 
-As far as **latency** goes I have been unable to run inference using SafeNet on any industry grade edge devices, but runnning on my Intel I7 cpu the model was able to run predictions in around 1 second without any pruning or quantization. 
+As far as **latency**, I have been unable to run inference using SafeNet on any industry grade edge devices, but running on my Intel I7 cpu the model was able to run predictions in around 1 second without any pruning or quantization. 
 
-### Confusion Matrix of Test Predicitons
+### Confusion Matrix of Test Predictions
 <p align="center">
   <img src="imgs/diagrams/confusionmatrix.png" alt="Confusion Matrix" width="600"/>
 </p>
@@ -213,9 +215,12 @@ As far as **latency** goes I have been unable to run inference using SafeNet on 
 - An ambitious goal would be to run 30 inferences per second, but without the ability to further test the ablities of SafeNet in a deployment scenario this is currently unachievable. However, any future improvements to the model would be primarily focused on latency. 
 
 ### Ensemble 
-- Another idea would be to implement an ensemble of multiple models that would collaborate to classify regions. SafeNet currently underperforms identifying cars which is most likely because of the square anchor box shape; since cars are longer than they are wide they have a more rectangular shape making it harder for the model to indentify using square grid kernels. An ensemble of models could solve this by each model having a different output shape, allowing some to be better suited at identifying paticular object. 
+- Another idea would be to implement an ensemble of multiple models that would collaborate to classify regions. SafeNet currently underperforms identifying cars which is most likely because of the square anchor box shape; since cars are longer than they are wide they have a more rectangular shape making it harder for the model to identify using square grid kernels. An ensemble of models could solve this by each model having a different output shape, allowing some to be better suited at identifying particular objects. 
 
-
+[contributors-shield]: https://img.shields.io/github/contributors/morse-rowan/SafeNet
+[contributors-url]: https://github.com/morse-rowan/SafeNet/graphs/contributors
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/rowan-morse/
 
 
 
