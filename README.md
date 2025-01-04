@@ -1,14 +1,10 @@
 <h1> SafeNet: Prototype Lightweight ConvNet for Grid-Based Binary Classification of Safe Drone Landing Zones </h1>
-<p align="center">
-  <img src="/imgs/gifs/gif1.gif" width="200" />
-  <img src="/imgs/gifs/gif2.gif" width="200" />
-  <img src="/imgs/gifs/gif4.gif" width="200" />
-</p>
-<p align="center">
-  <img src="/imgs/gifs/gif5.gif" width="200" />
-  <img src="/imgs/gifs/gif6.gif" width="200" />
-  <img src="/imgs/gifs/gif7.gif" width="200" />
-</p>
+
+**By Rowan Morse - University of Pittsburgh '28** 
+
+|||| 
+|-----------------------------|-----------------------------| -----------------------------| 
+| ![Gif1](/imgs/gifs/gif1.gif) <br> ![Gif4](/imgs/gifs/gif5.gif) <br> | ![Gif2](/imgs/gifs/gif2.gif) <br> ![Gif5](/imgs/gifs/gif6.gif) <br>| ![Gif3](/imgs/gifs/gif4.gif) <br> ![Gif6](imgs/gifs/gif7.gif) <br>| 
 <p align="center" style="font-style: italic; margin-top: 10px;">
   GIFs made from predictions on Test data at a 0.40 confidence threshold. The red dots indicate "unsafe" regions predicted by SafeNet.
 </p>
