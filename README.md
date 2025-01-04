@@ -1,6 +1,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Contributors][contributors-shield]][contributors-url]
-<h1> SafeNet: Prototype Lightweight ConvNet for Grid-Based Binary Classification of Safe Drone Landing Zones </h1>
+<h1> SafeNet: Prototype Lightweight ConvNet for Grid-Based Binary Classification of Safe UAV Landing Zones </h1>
 
 **Rowan Morse - University of Pittsburgh '28** 
 
