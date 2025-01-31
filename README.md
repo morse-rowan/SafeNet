@@ -2,7 +2,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 <h1> SafeNet: Prototype Lightweight ConvNet Architecture for Edge-Based UAV Navigation in Disaster Zones </h1>
 
-**Rowan Morse - University of Pittsburgh '28** 
+**Rowan Morse - University of Pittsburgh '27** 
 
 |||| 
 |-----------------------------|-----------------------------| -----------------------------| 
