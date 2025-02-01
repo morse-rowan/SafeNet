@@ -199,7 +199,7 @@ Where:
 - **F1 Score** = 0.7839
 - **Binary Accuracy** = 0.7455 
 
-As far as **latency**, I have been unable to run inference using SafeNet on any industry grade edge devices, but running on my Intel I7 cpu the model was able to run predictions in around 1 second without any pruning or quantization. 
+As far as **latency**, I have not been unable to run inference using SafeNet on any industry grade edge devices, but running on my Intel I7 cpu the model was able to run predictions in around 1 second without any pruning or quantization. 
 
 ### Confusion Matrix of Test Predictions
 <p align="center">
